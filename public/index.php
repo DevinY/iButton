@@ -25,7 +25,7 @@ date_default_timezone_set('Asia/Taipei');
             id="btn1"
             type="button" 
             href="https://www.ccc.tc"
-            class="btn btn-primary disabled"
+            class="btn ibutton btn-primary disabled"
             data-open='<?=$open*1000?>'
             data-close='<?=$close*1000?>'
             >Button One</a>
@@ -44,32 +44,74 @@ date_default_timezone_set('Asia/Taipei');
             id="btn2"
             type="button" 
             href="https://www.ccc.tc"
-            class="btn btn-primary disabled"
+            class="btn ibutton btn-primary disabled"
             data-open='<?=$open*1000?>'
             data-close='<?=$close*1000?>'
             >Button Two</a>
             <div id="btn2_open"></div>
             <div id="btn2_close"></div>
             <div id="btn2_countdown"></div>
+            <div id="btn2_countdown_hours"></div>
+
+            <?php
+            $open=strtotime("+2 hours", strtotime(date("Y-m-d H:i:00"))); //Open time
+            $close=strtotime("+3 hours",strtotime(date("Y-m-d H:i:00"))); //Close time
+            ?>
+            
+            <hr>
+
+            <a 
+            id="btn3"
+            type="button" 
+            href="https://www.ccc.tc"
+            class="btn ibutton btn-primary disabled"
+            data-open='<?=$open*1000?>'
+            data-close='<?=$close*1000?>'
+            >Button Three</a>
+            <div id="btn3_open"></div>
+            <div id="btn3_close"></div>
+            <div id="btn3_countdown_hours"></div>
+
+            <hr>
+
+            <?php
+            $open=strtotime("+1 minute", strtotime(date("Y-m-d H:i:00"))); //Open time
+            $close=strtotime("+3 minute",strtotime(date("Y-m-d H:i:00"))); //Close time
+            ?>
+
+            <a 
+            id="demo"
+            type="button" 
+            href="https://www.ccc.tc"
+            class="ibutton-custom btn btn-primary disabled"
+            data-open='<?=$open*1000?>'
+            data-close='<?=$close*1000?>'
+            >Demo</a>
+            <div id="demo_open"></div>
+            <div id="demo_close"></div>
+            <div id="demo_countdown_hours"></div>
 
 
           </div>
 
             <script>
+            let ib1 = iButton();
             var server_time = "<?= time() * 1000 ?>";
-            iButton.q(".btn").button(server_time, 'disabled');
+            ib1.q(".ibutton").button(server_time, 'disabled');
             </script>
 
             <script>
-            //custom open and close status
-            /*
-            var options = {
-            close_status:"<font color='red'>This meeting is closed.</font>",
-                open_status:"<font color='green'>Meeting in progress</font>"
+            //Custom open and close status
+            let ib = iButton();
+
+            options = {
+                countdown_prefix: '倒數中: ',
+                open_status:"class is staring",
+                close_status:"class is end"
             }
-            iButton.q(".btn",options).button(server_time, 'disabled');
-            */
+            ib.q(".ibutton-custom",options).button(server_time, 'disabled');
             </script>
+
     </body>
 
     </html>

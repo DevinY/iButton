@@ -7,10 +7,12 @@
  *
  * Date: 2020-04-13T21:04Z
  */
-var iButton = (function() {
+var iButton = function() {
     var debug = false;
     var unlock = false;
     var disabled_str = "";
+    var countdown_prefix = "";
+    var countdown_subfix = "";
     var elementList = null;
     var elm_debug_button_id = "";
     var open_status="💬";
@@ -35,6 +37,7 @@ var iButton = (function() {
                         var ibutton_opne = document.getElementById(btn_id+"_open");
                         var ibutton_close = document.getElementById(btn_id+"_close");
                         var ibutton_countdown = document.getElementById(btn_id+"_countdown");
+                        var ibutton_countdown_hours = document.getElementById(btn_id+"_countdown_hours");
                         var options = {
                                 year: 'numeric', month: 'numeric', day: 'numeric',
                                 hour: 'numeric', minute: 'numeric', second: 'numeric',
@@ -97,16 +100,30 @@ var iButton = (function() {
                         }
                     }
                     //countdown timer
+                    var countdown = unlock_ts - st;
+                    var t = parseInt(countdown / 1000);
                     if (ibutton_countdown) {
-                        var countdown = unlock_ts - st;
-                        var t = parseInt(countdown / 1000);
                         if (t > 0) {
-                            ibutton_countdown.innerHTML = t;
+                            ibutton_countdown.innerHTML = countdown_prefix+t+countdown_subfix;
                         } else if(lock_ts >= st){
                             ibutton_countdown.innerHTML = open_status;
                         } else{
                             ibutton_countdown.innerHTML = close_status;
                         }
+                    }
+                    console.log(ibutton_countdown_hours);
+
+                    if (ibutton_countdown_hours){
+                        if (t > 0) {
+                            itime = new Date(t * 1000).toISOString().substr(11, 8)
+                            ibutton_countdown_hours.innerHTML = countdown_prefix+itime+countdown_subfix;
+
+                        } else if(lock_ts >= st){
+                            ibutton_countdown_hours.innerHTML = open_status;
+                        } else{
+                            ibutton_countdown_hours.innerHTML = close_status;
+                        }
+
                     }
 
                 }
@@ -141,9 +158,10 @@ var iButton = (function() {
         q: function(elm,options={}){
             if(options.close_status) close_status=options.close_status;
             if(options.open_status) open_status=options.open_status;
-
+            if(options.countdown_prefix) countdown_prefix=options.countdown_prefix;
+            if(options.countdown_subfix) countdown_subfix=options.countdown_subfix;
             elementList = document.querySelectorAll(elm);
             return this;
         }
     };   
-})();
+};
