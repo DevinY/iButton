@@ -29,7 +29,6 @@ var iButton = function() {
                     var unlock_ts=elm[n].dataset.open;
                     var lock_ts=elm[n].dataset.close;
 
-                    console.log(); 
                     if(elm[n].id!=""){
                         var open_date="";
                         var close_date="";
@@ -111,7 +110,6 @@ var iButton = function() {
                             ibutton_countdown.innerHTML = close_status;
                         }
                     }
-                    console.log(ibutton_countdown_hours);
 
                     if (ibutton_countdown_hours){
                         if (t > 0) {
