@@ -27,7 +27,7 @@ Testing
 
         php -s 127.0.0.1:8111 -t public
 
-    step4:
+    step4: See the Demo
 
         http://127.0.0.1:8111/
 
