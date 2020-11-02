@@ -106,6 +106,7 @@ date_default_timezone_set('Asia/Taipei');
 
             options = {
                 countdown_prefix: '倒數中: ',
+                countdown_subfix: ' 分後開始',
                 open_status:"class is staring",
                 close_status:"class is end"
             }
