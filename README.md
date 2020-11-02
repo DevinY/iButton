@@ -13,26 +13,28 @@ Countdown timer.
 Show datetime in user's time zone.
 </pre>
 Testing
-<code>
+<pre>
+    
     setp1: clone this repo
 
-    git clone https://github.com/DevinY/iButton.git
+        git clone https://github.com/DevinY/iButton.git
 
     step2:
 
-    cd iButton
+        cd iButton
 
     step3: built-in web server from php.
 
-    php -s 127.0.0.1:8111 -t public
+        php -s 127.0.0.1:8111 -t public
 
     step4:
 
-    http://127.0.0.1:8111/
+        http://127.0.0.1:8111/
 
-</code>
+</pre>
 
 <code>
+    
             <script>
                 let ib1 = iButton();
                 var server_time = "1604304909000";
